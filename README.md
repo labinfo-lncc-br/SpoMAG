@@ -3,7 +3,9 @@
 
 ## Scope
 
-![alt text](https://github.com/labinfo-lncc/SpoMAG/blob/main/SpoMAGlogo.png?raw=true)
+<p align="center">
+<img src="SpoMAGlogo.png" alt="SpoMAG_logo" width="600"/>
+</p>
 
 SpoMAG is an R-based machine learning tool designed to predict the sporulation potential of Metagenome-Assembled Genomes (MAGs) from uncultivated Firmicutes species that could have the potential to undergo sporulation, such as those from the classes Bacilli and Clostridia. It leverages functional annotation and ensemble learning (Random Forest + Support Vector Machine) to identify likely spore-formers from genome annotation data.
 
