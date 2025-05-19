@@ -1,0 +1,29 @@
+Package: SpoMAG
+Type: Package
+Title: Probability of Sporulation potential in MAGs
+Version: 0.1.0
+Authors@R: 
+    c(person(given = "Douglas", family = "Terra Machado", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6580-7628"), email = "dougterra@gmail.com"),
+    person(given = "Otávio José", family = "Bernardes Brustolini", role = "ctb", comment = c(ORCID = "0000-0001-8132-9753")),
+    person(given = "Ellen", family = "dos Santos Corrêa", role = c("ctb")),
+    person(given = "Ana Tereza", family = "Ribeiro Vasconcelos", role = "ctb", comment = c(ORCID = "0000-0002-4632-2086")))
+Description: An R package that uses ensemble machine learning to predict the sporulation potential of metagenome-assembled genomes (MAGs) from uncultivated Firmicutes based on the presence/absence of sporulation-associated genes.
+License: Artistic-2.0
+Encoding: UTF-8
+LazyData: true
+Imports:
+    dplyr,
+    tidyr,
+    readr,
+    tibble,
+    stats
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0),
+    caret,
+    kernlab,
+    randomForest
+Config/testthat/edition: 3
+
+
