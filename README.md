@@ -115,8 +115,10 @@ Each row should represent one gene annotation.
 
 ### 1. `sporulation_gene_name()`
 It extracts sporulation-related genes from an annotation dataframe by searching for gene names and KEGG orthologs.
-Input: A dataframe with Preferred_name and KEGG_ko columns.
-Output: A filtered dataframe containing only sporulation-related hits, each annotated with a standardized column consensus_name_this_study.
+- Input: A dataframe with Preferred_name and KEGG_ko columns.
+  
+- Output: A filtered dataframe containing only sporulation-related hits, each annotated with a standardized column consensus_name_this_study.
+  
 
 ```r
 genes <- sporulation_gene_name(df)
@@ -124,8 +126,10 @@ genes <- sporulation_gene_name(df)
 
 ### 2. `build_binary_matrix()`
 It creates a binary matrix indicating the presence (1) or absence (0) of known sporulation genes in each genome.
-Input: A dataframe output from sporulation_gene_name().
-Output: A wide-format dataframe (1 row per genome, 1 column per gene).
+- Input: A dataframe output from sporulation_gene_name().
+  
+- Output: A wide-format dataframe (1 row per genome, 1 column per gene).
+   
 
 ```r
 matrix <- build_binary_matrix(genes)
@@ -136,14 +140,21 @@ Note: The function automatically fills in missing genes with 0 to ensure consist
 ### 3. `predict_sporulation()`
 It applies a pre-trained ensemble machine learning model (Random Forest + SVM) to predict the sporulation potential of genomes based on the binary matrix of genes.
 
-Input:
-    binary_matrix: Output from build_binary_matrix()
-    model_path: Path to .RData file containing rf_model, svm_model, and meta_model.
-Output: A dataframe with:
-    RF_Prob: Probability from Random Forest
-    SVM_Prob: Probability from SVM
-    Meta_Prediction: Final prediction (Esporulante or Nao_Esporulante)
-    Meta_Prob_Esporulante: Ensemble probability of being a spore-former
+- Input:
+
+  binary_matrix: Output from build_binary_matrix()
+
+  model_path: Path to .RData file containing rf_model, svm_model, and meta_model.
+  
+- Output: A dataframe with:
+  RF_Prob: Probability from Random Forest
+  
+  SVM_Prob: Probability from SVM
+  
+  Meta_Prediction: Final prediction (Esporulante or Nao_Esporulante)
+  
+  Meta_Prob_Esporulante: Ensemble probability of being a spore-former
+  
 
 ```r
 results <- predict_sporulation(binary_matrix = matrix, model_path = "path/to/modelos_stacking2.RData")
