@@ -34,13 +34,13 @@ Paper under publication.
 
 You can install the **SpoMAG** package directly from GitHub using:
 
-```R
+```r
 # Install devtools if not already installed
 install.packages("devtools")
 
 # Install SpoMAG from GitHub
 devtools::install_github("labinfo-lncc-br/SpoMAG")
-
+```
 
 ### Dependencies
 
@@ -57,6 +57,7 @@ SpoMAG depends on the following packages:
 ## Quick start
 This is a quick example using the included files sporulation.csv (a known spore-former) and asporogenic.csv (a known non-spore-formers).
 
+```r
 # Load package
 library(SpoMAG)
 
@@ -85,6 +86,7 @@ result_aspo <- predict_sporulation(bin_aspo, model_path)
 # View results
 print(result_spor)
 print(result_aspo)
+```
 
 The output includes the following columns:
 - RF_Prob: probability from Random Forest
@@ -116,14 +118,18 @@ It extracts sporulation-related genes from an annotation dataframe by searching 
 Input: A dataframe with Preferred_name and KEGG_ko columns.
 Output: A filtered dataframe containing only sporulation-related hits, each annotated with a standardized column consensus_name_this_study.
 
+```r
 genes <- sporulation_gene_name(df)
+```
 
 ### 2. `build_binary_matrix()`
 It creates a binary matrix indicating the presence (1) or absence (0) of known sporulation genes in each genome.
 Input: A dataframe output from sporulation_gene_name().
 Output: A wide-format dataframe (1 row per genome, 1 column per gene).
 
+```r
 matrix <- build_binary_matrix(genes)
+```
 
 Note: The function automatically fills in missing genes with 0 to ensure consistent input for prediction.
 
@@ -139,4 +145,6 @@ Output: A dataframe with:
     Meta_Prediction: Final prediction (Esporulante or Nao_Esporulante)
     Meta_Prob_Esporulante: Ensemble probability of being a spore-former
 
+```r
 results <- predict_sporulation(binary_matrix = matrix, model_path = "path/to/modelos_stacking2.RData")
+```
