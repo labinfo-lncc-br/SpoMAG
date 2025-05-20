@@ -1,11 +1,13 @@
-# Probability of Sporulation potential in MAGs (SpoMAG) 
-
-
-## Scope
+<p align="center">
+<img src="SpoMAG_title.png" alt="SpoMAG_title" width="600"/>
+</p>
 
 <p align="center">
 <img src="SpoMAGlogo.png" alt="SpoMAG_logo" width="600"/>
 </p>
+
+## Scope
+
 
 SpoMAG is an R-based machine learning tool developed to predict the sporulation potential of Metagenome-Assembled Genomes (MAGs) from uncultivated Firmicutes species, particularly from the Bacilli and Clostridia classes. The premise behind SpoMAG is that the complex combination of presence or absence of sporulation-associated genes across a genome can be leveraged to infer its potential to form spores, even in the absence of cultivation or complete genome assemblies. This strategy enables researchers to investigate spore-forming potential in metagenomic studies using only genomic annotations.
 
