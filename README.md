@@ -119,8 +119,14 @@ Each row should represent one gene annotation.
 ## Quick start
 ### Running with a single genome in the annotation file
 This is a quick example using the included files one_sporulation.csv (a known spore-former) and one_asporogenic.csv (a known non-spore-former).
-The genome used for the spore-former here is the XXXX (speciesXXXX).
-The genome used for the non-spore-former here is the XXXX (speciesXXXX).
+The genome used for the spore-former here is the following:
+
+- XXXX (speciesXXXX)
+
+  
+The genome used for the non-spore-former here is the following:
+
+- XXXX (speciesXXXX)
 
 
 ```r
@@ -162,6 +168,7 @@ The output includes the following columns:
 ### Running with more than one genome in the annotation file
 This is a quick example using the included files ten_sporulation.csv (ten known spore-formers) and ten_asporogenic.csv (ten known non-spore-formers).
 The genomes used for the spore-formers here are the following:
+
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
@@ -173,6 +180,7 @@ The genomes used for the spore-formers here are the following:
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
 The genomes used for the non-spore-formers here are the following:
+
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
