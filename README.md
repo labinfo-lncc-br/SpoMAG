@@ -54,61 +54,6 @@ SpoMAG depends on the following packages:
 - randomForest, version XXX
 
 
-## Quick start
-This is a quick example using the included files sporulation.csv (a known spore-former) and asporogenic.csv (a known non-spore-formers).
-
-```r
-# Load package
-library(SpoMAG)
-
-# Load example annotation tables
-file_spor <- system.file("extdata", "sporulation.csv", package = "SpoMAG")
-file_aspo <- system.file("extdata", "asporogenic.csv", package = "SpoMAG")
-
-# Read files
-df_spor <- readr::read_csv(file_spor)
-df_aspo <- readr::read_csv(file_aspo)
-
-# Step 1: Extract sporulation-related genes
-genes_spor <- sporulation_gene_name(df_spor)
-genes_aspo <- sporulation_gene_name(df_aspo)
-
-# Step 2: Convert to binary matrix
-bin_spor <- build_binary_matrix(genes_spor)
-bin_aspo <- build_binary_matrix(genes_aspo)
-
-# Step 3: Predict using ensemble model (preloaded in package)
-model_path <- system.file("extdata", "modelos_stacking2.RData", package = "SpoMAG")
-
-result_spor <- predict_sporulation(bin_spor, model_path)
-result_aspo <- predict_sporulation(bin_aspo, model_path)
-
-# View results
-print(result_spor)
-print(result_aspo)
-```
-
-The output includes the following columns:
-- Meta_Prediction: final ensemble prediction
-- Meta_Prob_Esporulante: predicted probability of being a spore-former
-
-
-### Input data format
-
-To use SpoMAG, your input must be a functional annotation table, such as the output from eggNOG-mapper, containing at least two columns:
-
-| Preferred_name | KEGG_ko |
-|----------------|---------|
-| ftsZ           | K02304  |
-| spo0A          | K07699  |
-| ...            | ...     |
-
-
-- Preferred_name: the predicted name of the gene
-- KEGG_ko: the KEGG Orthology code (e.g., K07699)
-
-Each row should represent one gene annotation.
-
 ### Core functions in SpoMAG
 
 ### 1. `sporulation_gene_name()`
@@ -154,3 +99,105 @@ It applies a pre-trained ensemble machine learning model (Random Forest + SVM) t
 ```r
 results <- predict_sporulation(binary_matrix = matrix, model_path = "path/to/modelos_stacking2.RData")
 ```
+
+### Input data format
+
+To use SpoMAG, your input must be a functional annotation table, such as the output from eggNOG-mapper, containing at least two columns:
+
+| Preferred_name | KEGG_ko |
+|----------------|---------|
+| ftsZ           | K02304  |
+| spo0A          | K07699  |
+| ...            | ...     |
+
+
+- Preferred_name: the predicted name of the gene
+- KEGG_ko: the KEGG Orthology code (e.g., K07699)
+
+Each row should represent one gene annotation.
+
+## Quick start
+### Running with a single genome in the annotation file
+This is a quick example using the included files one_sporulation.csv (a known spore-former) and one_asporogenic.csv (a known non-spore-former).
+The genome used for the spore-former here is the XXXX (speciesXXXX).
+The genome used for the non-spore-former here is the XXXX (speciesXXXX).
+
+
+```r
+# Load package
+library(SpoMAG)
+
+# Load example annotation tables
+file_spor <- system.file("extdata", "sporulation.csv", package = "SpoMAG")
+file_aspo <- system.file("extdata", "asporogenic.csv", package = "SpoMAG")
+
+# Read files
+df_spor <- readr::read_csv(file_spor)
+df_aspo <- readr::read_csv(file_aspo)
+
+# Step 1: Extract sporulation-related genes
+genes_spor <- sporulation_gene_name(df_spor)
+genes_aspo <- sporulation_gene_name(df_aspo)
+
+# Step 2: Convert to binary matrix
+bin_spor <- build_binary_matrix(genes_spor)
+bin_aspo <- build_binary_matrix(genes_aspo)
+
+# Step 3: Predict using ensemble model (preloaded in package)
+model_path <- system.file("extdata", "modelos_stacking2.RData", package = "SpoMAG")
+
+result_spor <- predict_sporulation(bin_spor, model_path)
+result_aspo <- predict_sporulation(bin_aspo, model_path)
+
+# View results
+print(result_spor)
+print(result_aspo)
+```
+
+The output includes the following columns:
+- Meta_Prediction: final ensemble prediction
+- Meta_Prob_Esporulante: predicted probability of being a spore-former
+
+
+### Running with more than one genome in the annotation file
+This is a quick example using the included files ten_sporulation.csv (ten known spore-formers) and ten_asporogenic.csv (ten known non-spore-formers).
+The genome used for the spore-former here is the XXXX (speciesXXXX). XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+The genome used for the non-spore-former here is the XXXX (speciesXXXX). XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+```r
+# Load package
+library(SpoMAG)
+
+# Load example annotation tables
+file_spor <- system.file("extdata", "sporulation.csv", package = "SpoMAG")
+file_aspo <- system.file("extdata", "asporogenic.csv", package = "SpoMAG")
+
+# Read files
+df_spor <- readr::read_csv(file_spor)
+df_aspo <- readr::read_csv(file_aspo)
+
+# Step 1: Extract sporulation-related genes
+genes_spor <- sporulation_gene_name(df_spor)
+genes_aspo <- sporulation_gene_name(df_aspo)
+
+# Step 2: Convert to binary matrix
+bin_spor <- build_binary_matrix(genes_spor)
+bin_aspo <- build_binary_matrix(genes_aspo)
+
+# Step 3: Predict using ensemble model (preloaded in package)
+model_path <- system.file("extdata", "modelos_stacking2.RData", package = "SpoMAG")
+
+result_spor <- predict_sporulation(bin_spor, model_path)
+result_aspo <- predict_sporulation(bin_aspo, model_path)
+
+# View results
+print(result_spor)
+print(result_aspo)
+```
+
+The output includes the following columns:
+- Meta_Prediction: final ensemble prediction
+- Meta_Prob_Esporulante: predicted probability of being a spore-former
+
+
