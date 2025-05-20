@@ -59,7 +59,7 @@ SpoMAG depends on the following packages:
 - randomForest, version XXX
 
 
-### Core functions in SpoMAG
+### Preprocessing functions in SpoMAG
 
 ### 1. `sporulation_gene_name()`
 It extracts sporulation-related genes from an annotation dataframe by searching for gene names and KEGG orthologs.
@@ -84,6 +84,8 @@ matrix <- build_binary_matrix(genes)
 ```
 
 Note: The function automatically fills in missing genes with 0 to ensure consistent input for prediction.
+
+### Function to predict sporulation using SpoMAG
 
 ### 3. `predict_sporulation()`
 It applies a pre-trained ensemble machine learning model (Random Forest + SVM) to predict the sporulation potential of genomes based on the binary matrix of genes.
