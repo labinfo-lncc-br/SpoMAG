@@ -179,6 +179,7 @@ The genomes used for the spore-formers here are the following:
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
 - XXXX (speciesXXXX)
+  
 The genomes used for the non-spore-formers here are the following:
 
 - XXXX (speciesXXXX)
