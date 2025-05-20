@@ -121,12 +121,12 @@ Each row should represent one gene annotation.
 This is a quick example using the included files one_sporulation.csv (a known spore-former) and one_asporogenic.csv (a known non-spore-former).
 The genome used for the spore-former here is the following:
 
-- XXXX (speciesXXXX)
+- XXXX (speciesXXXX, Clostridia class)
 
   
 The genome used for the non-spore-former here is the following:
 
-- XXXX (speciesXXXX)
+- XXXX (speciesXXXX, Clostridia class)
 
 
 ```r
@@ -169,29 +169,29 @@ The output includes the following columns:
 This is a quick example using the included files ten_sporulation.csv (ten known spore-formers) and ten_asporogenic.csv (ten known non-spore-formers).
 The genomes used for the spore-formers here are the following:
 
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
   
 The genomes used for the non-spore-formers here are the following:
 
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
-- XXXX (speciesXXXX)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Bacilli class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
+- XXXX (speciesXXXX, Clostridia class)
 
 
 ```r
