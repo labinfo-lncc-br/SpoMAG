@@ -144,13 +144,9 @@ It applies a pre-trained ensemble machine learning model (Random Forest + SVM) t
 
   binary_matrix: Output from build_binary_matrix()
 
-  model_path: Path to .RData file containing rf_model, svm_model, and meta_model.
+  model_path: Path to .RData file.
   
 - Output: A dataframe with:
-  RF_Prob: Probability from Random Forest
-  
-  SVM_Prob: Probability from SVM
-  
   Meta_Prediction: Final prediction (Esporulante or Nao_Esporulante)
   
   Meta_Prob_Esporulante: Ensemble probability of being a spore-former
