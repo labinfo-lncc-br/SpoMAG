@@ -89,8 +89,6 @@ print(result_aspo)
 ```
 
 The output includes the following columns:
-- RF_Prob: probability from Random Forest
-- SVM_Prob: probability from SVM
 - Meta_Prediction: final ensemble prediction
 - Meta_Prob_Esporulante: predicted probability of being a spore-former
 
@@ -147,6 +145,7 @@ It applies a pre-trained ensemble machine learning model (Random Forest + SVM) t
   model_path: Path to .RData file.
   
 - Output: A dataframe with:
+  
   Meta_Prediction: Final prediction (Esporulante or Nao_Esporulante)
   
   Meta_Prob_Esporulante: Ensemble probability of being a spore-former
