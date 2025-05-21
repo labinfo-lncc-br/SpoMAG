@@ -117,8 +117,10 @@ To use SpoMAG, your input must be a functional annotation table, such as the out
 
 | Preferred_name | KEGG_ko |
 |----------------|---------|
-| ftsZ           | K02304  |
+| spoIIIE        | K03466  |
 | spo0A          | K07699  |
+| -              | K01056  |
+| pth            | -       |
 | ...            | ...     |
 
 
@@ -126,6 +128,14 @@ To use SpoMAG, your input must be a functional annotation table, such as the out
 - KEGG_ko: the KEGG Orthology code (e.g., K07699)
 
 Each row should represent one gene annotation.
+
+Another differential of SpoMAG is its ability to infer gene identity even in cases where annotations are ambiguous. As shown in the example above, some rows can contain a valid `KEGG_ko` code but a missing or undefined `Preferred_name` (e.g., “-”), while others have a predicted gene name but no associated KO. SpoMAG integrates both fields to assign a unified `spo_gene_name`:
+
+- If `Preferred_name` is missing but `KEGG_ko` matches a known sporulation-associated KO, the gene is identified based on the KO.
+
+- If `KEGG_ko` is missing but `Preferred_name` matches a known sporulation gene, the gene is identified based on the name.
+
+- If both are informative and match known references, preference is given to `Preferred_name`.
 
 ## Quick start
 ### Running with a single genome in the annotation file
