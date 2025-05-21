@@ -129,15 +129,15 @@ Each row should represent one gene annotation.
 
 ## Quick start
 ### Running with a single genome in the annotation file
-This is a quick example using the included files one_sporulation.csv (a known spore-former) and one_asporogenic.csv (a known non-spore-former).
+This is a quick example using the included files: one_sporulating.csv (a known spore-former) and one_asporogenic.csv (a known non-spore-former).
 The genome used for the spore-former here is the following:
 
-- XXXX (speciesXXXX, Clostridia class)
+- GCF_000007625.1 (_Clostridium tetani_ E88, Clostridia class)
 
   
 The genome used for the non-spore-former here is the following:
 
-- XXXX (speciesXXXX, Clostridia class)
+- GCF_000006785.2 (_Streptococcus pyogenes_ M1 GAS SF370, Clostridia class)
 
 
 ```r
@@ -145,12 +145,12 @@ The genome used for the non-spore-former here is the following:
 library(SpoMAG)
 
 # Load example annotation tables
-file_spor <- system.file("extdata", "sporulation.csv", package = "SpoMAG")
-file_aspo <- system.file("extdata", "asporogenic.csv", package = "SpoMAG")
+file_spor <- system.file("extdata", "one_sporulation.csv", package = "SpoMAG")
+file_aspo <- system.file("extdata", "one_asporogenic.csv", package = "SpoMAG")
 
 # Read files
-df_spor <- readr::read_csv(file_spor)
-df_aspo <- readr::read_csv(file_aspo)
+df_spor <- readr::read_csv(file_spor, show_col_types = FALSE)
+df_aspo <- readr::read_csv(file_aspo, show_col_types = FALSE)
 
 # Step 1: Extract sporulation-related genes
 genes_spor <- sporulation_gene_name(df_spor)
@@ -161,10 +161,9 @@ bin_spor <- build_binary_matrix(genes_spor)
 bin_aspo <- build_binary_matrix(genes_aspo)
 
 # Step 3: Predict using ensemble model (preloaded in package)
-model_path <- system.file("extdata", "modelos_stacking2.RData", package = "SpoMAG")
 
-result_spor <- predict_sporulation(bin_spor, model_path)
-result_aspo <- predict_sporulation(bin_aspo, model_path)
+result_spor <- predict_sporulation(bin_spor)
+result_aspo <- predict_sporulation(bin_aspo)
 
 # View results
 print(result_spor)
@@ -177,32 +176,32 @@ The output includes the following columns:
 
 
 ### Running with more than one genome in the annotation file
-This is a quick example using the included files ten_sporulation.csv (ten known spore-formers) and ten_asporogenic.csv (ten known non-spore-formers).
+This is a quick example using the included files: ten_sporulating.csv (ten known spore-formers) and ten_asporogenic.csv (ten known non-spore-formers).
 The genomes used for the spore-formers here are the following:
 
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
+- GCF_000011985.1 (_Lactobacillus acidophilus_ NCFM, Bacilli class)
+- GCF_000338115.2 (_Lactobacillus plantarum_ ZJ316, Bacilli class)
+- GCF_000016825.1 (_Lactobacillus reuteri_ DSM 20016, Bacilli class)
+- GCF_000011045.1 (_Lactobacillus rhamnosus_ GG ATCC 53103, Bacilli class)
+- GCF_000237995.1 (_Pediococcus claussenii_ ATCC BAA-344, Bacilli class)
+- GCF_000145035.1 (_Butyrivibrio proteoclasticus_ B316, Clostridia class)
+- GCF_000020605.1 (_Eubacterium rectale_ ATCC 33656, Clostridia class)
+- GCF_900070325.1 (_Herbinix luporum_ SD1D, Clostridia class)
+- GCF_003589745.1 (_Lachnoanaerobaculum umeaense_ DSM 23576, Clostridia class)
+- GCF_000225345.1 (_Roseburia hominis_ A2-183, Clostridia class)
   
 The genomes used for the non-spore-formers here are the following:
 
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Bacilli class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
-- XXXX (speciesXXXX, Clostridia class)
+- GCF_000011145.1 (_Bacillus halodurans_ C-125, Bacilli class)
+- GCF_000008425.1 (_Bacillus licheniformis_ DSM 13 ATCC 14580, Bacilli class)
+- GCF_000009045.1 (_Bacillus subtilis subsp. subtilis_ str. 168, Bacilli class)
+- GCF_000338755.1 (_Bacillus thuringiensis serovar kurstaki_ HD73, Bacilli class)
+- GCF_000010165.1 (_Brevibacillus brevis_ NBRC 100599, Bacilli class)
+- GCF_000009205.2 (_Clostridioides difficile_ 630, Clostridia class)
+- GCF_000008765.1 (_Clostridium acetobutylicum_ ATCC 824, Clostridia class)
+- GCF_000063585.1 (_Clostridium botulinum_ A ATCC 3502, Clostridia class)
+- GCF_000013285.1 (_Clostridium perfringens_ ATCC 13124, Clostridia class)
+- GCF_000007625.1 (_Clostridium tetani_ E88, Clostridia class)
 
 
 ```r
@@ -210,12 +209,12 @@ The genomes used for the non-spore-formers here are the following:
 library(SpoMAG)
 
 # Load example annotation tables
-file_spor <- system.file("extdata", "sporulation.csv", package = "SpoMAG")
-file_aspo <- system.file("extdata", "asporogenic.csv", package = "SpoMAG")
+file_spor <- system.file("extdata", "ten_sporulating.csv", package = "SpoMAG")
+file_aspo <- system.file("extdata", "ten_asporogenic.csv", package = "SpoMAG")
 
 # Read files
-df_spor <- readr::read_csv(file_spor)
-df_aspo <- readr::read_csv(file_aspo)
+df_spor <- readr::read_csv(file_spor, show_col_types = FALSE)
+df_aspo <- readr::read_csv(file_aspo, show_col_types = FALSE)
 
 # Step 1: Extract sporulation-related genes
 genes_spor <- sporulation_gene_name(df_spor)
@@ -226,10 +225,8 @@ bin_spor <- build_binary_matrix(genes_spor)
 bin_aspo <- build_binary_matrix(genes_aspo)
 
 # Step 3: Predict using ensemble model (preloaded in package)
-model_path <- system.file("extdata", "modelos_stacking2.RData", package = "SpoMAG")
-
-result_spor <- predict_sporulation(bin_spor, model_path)
-result_aspo <- predict_sporulation(bin_aspo, model_path)
+result_spor <- predict_sporulation(bin_spor)
+result_aspo <- predict_sporulation(bin_aspo)
 
 # View results
 print(result_spor)
