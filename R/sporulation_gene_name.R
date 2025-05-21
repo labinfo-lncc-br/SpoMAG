@@ -4,9 +4,9 @@
 #' It searches for gene names and KEGG Orthology identifiers related to sporulation steps and returns
 #' a data frame with annotated sporulation genes and a consensus name.
 #'
-#' @param df A data frame containing MAG annotation with columns like 'Preferred_name' and 'KEGG_ko'.
+#' @param df A data frame containing MAG annotation with the columns 'Preferred_name' and 'KEGG_ko'.
 #'
-#' @return A data frame of sporulation-associated genes with standardized names and process tags.
+#' @return A data frame of sporulation-associated genes with standardized names and spo_process tags.
 #' @import dplyr
 #' @importFrom tidyr pivot_wider
 #'
@@ -23,7 +23,7 @@ sporulation_gene_name <- function(df){
     spo0a_gene <- rbind(spo0a_gene, spo0a_ko)
   }, error = function(e) {})
   tryCatch({
-    spo0a_gene$consensus_name_this_study <- "spo0A"
+    spo0a_gene$spo_gene_name <- "spo0A"
   }, error = function(e) {})
   ### *** spo0a_gene
 
@@ -31,7 +31,7 @@ sporulation_gene_name <- function(df){
   tryCatch({
     ### sigH ###
     sigh_gene <- df %>% filter(grepl('sigh', tolower(Preferred_name)))
-    sigh_gene$consensus_name_this_study <- "sigH"
+    sigh_gene$spo_gene_name <- "sigH"
     ### *** sigh_gene
   }, error = function(e) {})
 
@@ -43,7 +43,7 @@ sporulation_gene_name <- function(df){
     spoiie_gene <- rbind(spoiie_gene, spoiie_ko)
   }, error = function(e) {})
   tryCatch({
-    spoiie_gene$consensus_name_this_study <- "spoIIE"
+    spoiie_gene$spo_gene_name <- "spoIIE"
   }, error = function(e) {})
   ### *** spoiie_gene
 
@@ -64,7 +64,7 @@ sporulation_gene_name <- function(df){
     ### *** spoiiie_gene
   }, error = function(e) {})
   tryCatch({
-    spoiiie_gene$consensus_name_this_study <- "spoIIIE"
+    spoiiie_gene$spo_gene_name <- "spoIIIE"
   }, error = function(e) {})
 
 
@@ -76,7 +76,7 @@ sporulation_gene_name <- function(df){
     yidc_gene <- rbind(yidc_gene, yidc_ko)
   }, error = function(e) {})
   tryCatch({
-    yidc_gene$consensus_name_this_study <- "spoIIIJ"
+    yidc_gene$spo_gene_name <- "spoIIIJ"
   }, error = function(e) {})
   ### *** yidc_gene
 
@@ -90,7 +90,7 @@ sporulation_gene_name <- function(df){
     pth_gene <- rbind(pth_gene, pth_ko)
   }, error = function(e) {})
   tryCatch({
-    pth_gene$consensus_name_this_study <- "pth"
+    pth_gene$spo_gene_name <- "pth"
   }, error = function(e) {})
   ### *** pth_gene
 
@@ -103,7 +103,7 @@ sporulation_gene_name <- function(df){
     spovg_gene <- rbind(spovg_gene, spovg_com_nome)
   }, error = function(e) {})
   tryCatch({
-    spovg_gene$consensus_name_this_study <- "spoVG"
+    spovg_gene$spo_gene_name <- "spoVG"
   }, error = function(e) {})
   ### *** spovg_gene
 
@@ -115,7 +115,7 @@ sporulation_gene_name <- function(df){
     spovs_gene <- rbind(spovs_gene, spovs_ko)
   }, error = function(e) {})
   tryCatch({
-    spovs_gene$consensus_name_this_study <- "spoVS"
+    spovs_gene$spo_gene_name <- "spoVS"
   }, error = function(e) {})
   ### *** spovs_gene
 
@@ -129,7 +129,7 @@ sporulation_gene_name <- function(df){
     divib_gene <- rbind(divib_gene, divib_ko_ftsq)
   }, error = function(e) {})
   tryCatch({
-    divib_gene$consensus_name_this_study <- "divIB"
+    divib_gene$spo_gene_name <- "divIB"
   }, error = function(e) {})
   ### *** divib_gene
 
@@ -141,7 +141,7 @@ sporulation_gene_name <- function(df){
     divic_gene <- rbind(divic_gene, divic_ko)
   }, error = function(e) {})
   tryCatch({
-    divic_gene$consensus_name_this_study <- "divIC"
+    divic_gene$spo_gene_name <- "divIC"
   }, error = function(e) {})
   ### *** divic_gene
 
@@ -153,14 +153,14 @@ sporulation_gene_name <- function(df){
     diviva_gene <- rbind(diviva_gene, diviva_ko)
   }, error = function(e) {})
   tryCatch({
-    diviva_gene$consensus_name_this_study <- "divIVA"
+    diviva_gene$spo_gene_name <- "divIVA"
   }, error = function(e) {})
   ### *** diviva_gene
 
   tryCatch({
     ### ftsA ###
     ftsa_gene <- df %>% filter(grepl('ftsa', tolower(Preferred_name)))
-    ftsa_gene$consensus_name_this_study <- "ftsA"
+    ftsa_gene$spo_gene_name <- "ftsA"
     ### *** ftsa_gene
   }, error = function(e) {})
 
@@ -172,7 +172,7 @@ sporulation_gene_name <- function(df){
     ftse_gene <- rbind(ftse_gene, ftse_ko)
   }, error = function(e) {})
   tryCatch({
-    ftse_gene$consensus_name_this_study <- "ftsE"
+    ftse_gene$spo_gene_name <- "ftsE"
   }, error = function(e) {})
   ### *** ftse_gene
 
@@ -184,7 +184,7 @@ sporulation_gene_name <- function(df){
     ftsh_gene <- rbind(ftsh_gene, ftsh_ko)
   }, error = function(e) {})
   tryCatch({
-    ftsh_gene$consensus_name_this_study <- "ftsH"
+    ftsh_gene$spo_gene_name <- "ftsH"
   }, error = function(e) {})
   ### *** ftsh_gene
 
@@ -192,25 +192,25 @@ sporulation_gene_name <- function(df){
   ftsX_gene <- df %>% filter(grepl('ftsx', tolower(Preferred_name)))
   tryCatch({
     ftsX_ko <- df %>% filter(grepl('09811', tolower(KEGG_ko)))
-    ftsX_ko$consensus_name_this_study <- "ftsX"
+    ftsX_ko$spo_gene_name <- "ftsX"
     ftsX_gene <- ftsX_ko
   }, error = function(e) {})
   tryCatch({
-    ftsX_gene$consensus_name_this_study <- "ftsX"
+    ftsX_gene$spo_gene_name <- "ftsX"
   }, error = function(e) {})
   ### *** ftsX_gene
 
   tryCatch({
     ### ftsY ###
     ftsy_gene <- df %>% filter(grepl('ftsy', tolower(Preferred_name)))
-    ftsy_gene$consensus_name_this_study <- "ftsY"
+    ftsy_gene$spo_gene_name <- "ftsY"
     ### *** ftsy_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ftsZ ###
     ftsz_gene <- df %>% filter(grepl('ftsz', tolower(Preferred_name)))
-    ftsz_gene$consensus_name_this_study <- "ftsZ"
+    ftsz_gene$spo_gene_name <- "ftsZ"
     ### *** ftsz_gene
   }, error = function(e) {})
 
@@ -223,7 +223,7 @@ sporulation_gene_name <- function(df){
   }, error = function(e) {})
   ### *** jag_gene
   tryCatch({
-    jag_gene$consensus_name_this_study <- "jag"
+    jag_gene$spo_gene_name <- "jag"
   }, error = function(e) {})
 
   ### minC ###
@@ -233,21 +233,21 @@ sporulation_gene_name <- function(df){
     minc_gene <-minc_ko
   }, error = function(e) {})
   tryCatch({
-    minc_gene$consensus_name_this_study <- "minC"
+    minc_gene$spo_gene_name <- "minC"
   }, error = function(e) {})
   ### *** minc_gene
 
   tryCatch({
     ### mind ###
     mind_gene <- df %>% filter(grepl('mind', tolower(Preferred_name)))
-    mind_gene$consensus_name_this_study <- "minD"
+    mind_gene$spo_gene_name <- "minD"
     ### *** mind_gene
   }, error = function(e) {})
 
   tryCatch({
     ### obg ###
     obg_gene <- df %>% filter(grepl('obg', tolower(Preferred_name)))
-    obg_gene$consensus_name_this_study <- "obg"
+    obg_gene$spo_gene_name <- "obg"
     ### *** obg_gene
   }, error = function(e) {})
 
@@ -258,7 +258,7 @@ sporulation_gene_name <- function(df){
     spo0b_gene <- spo0b_ko
   }, error = function(e) {})
   tryCatch({
-    spo0b_gene$consensus_name_this_study <- "spo0B"
+    spo0b_gene$spo_gene_name <- "spo0B"
   }, error = function(e) {})
   ### *** spo0b_gene
 
@@ -270,7 +270,7 @@ sporulation_gene_name <- function(df){
     spo0f_gene <- rbind(spo0f_gene, spo0f_ko)
   }, error = function(e) {})
   tryCatch({
-    spo0f_gene$consensus_name_this_study <- "spo0F"
+    spo0f_gene$spo_gene_name <- "spo0F"
   }, error = function(e) {})
   ### *** spo0f_gene
 
@@ -282,42 +282,42 @@ sporulation_gene_name <- function(df){
     ald_gene <- rbind(ald_gene, ald_ko)
   }, error = function(e) {})
   tryCatch({
-    ald_gene$consensus_name_this_study <- "ald"
+    ald_gene$spo_gene_name <- "ald"
   }, error = function(e) {})
   ### *** ald_gene
 
   tryCatch({
     ### ftsL ###
     ftsl_gene <- df %>% filter(grepl('ftsl', tolower(Preferred_name)))
-    ftsl_gene$consensus_name_this_study <- "ftsL"
+    ftsl_gene$spo_gene_name <- "ftsL"
     ### *** ftsl_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ymcA ###
     ymca_gene <- df %>% filter(grepl('ymca', tolower(Preferred_name)))
-    ymca_gene$consensus_name_this_study <- "ymcA"
+    ymca_gene$spo_gene_name <- "ymcA"
     ### *** ymca_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ylbF ###
     ylbf_gene <- df %>% filter(grepl('ylbf', tolower(Preferred_name)))
-    ylbf_gene$consensus_name_this_study <- "ylbF"
+    ylbf_gene$spo_gene_name <- "ylbF"
     ### *** ylbf_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yaaT ###
     yaat_gene <- df %>% filter(grepl('yaat', tolower(Preferred_name)))
-    yaat_gene$consensus_name_this_study <- "yaaT"
+    yaat_gene$spo_gene_name <- "yaaT"
     ### *** yaat_gene
   }, error = function(e) {})
 
   tryCatch({
     ### sda ###
     sda_gene <- df[df$Preferred_name == 'sda',]
-    sda_gene$consensus_name_this_study <- "sda"
+    sda_gene$spo_gene_name <- "sda"
     ### *** sda_gene
   }, error = function(e) {})
 
@@ -350,7 +350,7 @@ sporulation_gene_name <- function(df){
     sporulation_onset_and_checkpoints <- rbind(sporulation_onset_and_checkpoints, ylbf_gene)
     sporulation_onset_and_checkpoints <- rbind(sporulation_onset_and_checkpoints, yaat_gene)
     sporulation_onset_and_checkpoints <- rbind(sporulation_onset_and_checkpoints, sda_gene)
-    sporulation_onset_and_checkpoints$process <- "sporulation_onset_and_checkpoints"
+    sporulation_onset_and_checkpoints$spo_process <- "sporulation_onset_and_checkpoints"
   }, error = function(e) {})
 
   ##### Spo0A regulon #####
@@ -359,35 +359,35 @@ sporulation_gene_name <- function(df){
   tryCatch({
     ### sigE ###
     sigE_gene <- df %>% filter(grepl('sige', tolower(Preferred_name)))
-    sigE_gene$consensus_name_this_study <- "sigE"
+    sigE_gene$spo_gene_name <- "sigE"
     ### *** sigE_gene
   }, error = function(e) {})
 
   tryCatch({
     ### sigF ###
     sigF_gene <- df %>% filter(grepl('sigf', tolower(Preferred_name)))
-    sigF_gene$consensus_name_this_study <- "sigF"
+    sigF_gene$spo_gene_name <- "sigF"
     ### *** sigF_gene
   }, error = function(e) {})
 
   tryCatch({
     ### sigG ###
     sigg_gene <- df %>% filter(grepl('sigg', tolower(Preferred_name)))
-    sigg_gene$consensus_name_this_study <- "sigG"
+    sigg_gene$spo_gene_name <- "sigG"
     ### *** sigg_gene
   }, error = function(e) {})
 
   tryCatch({
     ### spoiiaa ###
     spoiiaa_gene <- df %>% filter(grepl('spoiiaa', tolower(Preferred_name)))
-    spoiiaa_gene$consensus_name_this_study <- "spoIIAA"
+    spoiiaa_gene$spo_gene_name <- "spoIIAA"
     ### *** spoiiaa_gene
   }, error = function(e) {})
 
   tryCatch({
     ### spoiiab ###
     spoiiab_gene <- df %>% filter(grepl('spoiiab', tolower(Preferred_name)))
-    spoiiab_gene$consensus_name_this_study <- "spoIIAB"
+    spoiiab_gene$spo_gene_name <- "spoIIAB"
     ### *** spoiiab_gene
   }, error = function(e) {})
 
@@ -399,21 +399,21 @@ sporulation_gene_name <- function(df){
     spoiiga_gene <- rbind(spoiiga_gene, spoiiga_ko)
   }, error = function(e) {})
   tryCatch({
-    spoiiga_gene$consensus_name_this_study <- "spoIIGA"
+    spoiiga_gene$spo_gene_name <- "spoIIGA"
   }, error = function(e) {})
   ### *** spoiiga_gene
 
   tryCatch({
     ### parA ###
     para_gene <- df %>% filter(grepl('para', tolower(Preferred_name)))
-    para_gene$consensus_name_this_study <- "parA"
+    para_gene$spo_gene_name <- "parA"
     ### *** para_gene
   }, error = function(e) {})
 
   tryCatch({
     ### soj ###
     soj_gene <- df %>% filter(grepl('soj', tolower(Preferred_name)))
-    soj_gene$consensus_name_this_study <- "soj"
+    soj_gene$spo_gene_name <- "soj"
     ### *** soj_gene
   }, error = function(e) {})
 
@@ -425,7 +425,7 @@ sporulation_gene_name <- function(df){
     ### *** parb_gene
   }, error = function(e) {})
   tryCatch({
-    parb_gene$consensus_name_this_study <- "parB"
+    parb_gene$spo_gene_name <- "parB"
   }, error = function(e) {})
 
   tryCatch({
@@ -437,7 +437,7 @@ sporulation_gene_name <- function(df){
     spo0a_regulon <- rbind(spo0a_regulon, para_gene)
     spo0a_regulon <- rbind(spo0a_regulon, soj_gene)
     spo0a_regulon <- rbind(spo0a_regulon, parb_gene)
-    spo0a_regulon$process <- "spo0a_regulon"
+    spo0a_regulon$spo_process <- "spo0a_regulon"
   }, error = function(e) {})
 
   ##### Engulfment #####
@@ -450,7 +450,7 @@ sporulation_gene_name <- function(df){
     spoiid_gene <- spoiid_ko
   }, error = function(e) {})
   tryCatch({
-    spoiid_gene$consensus_name_this_study <- "spoIID"
+    spoiid_gene$spo_gene_name <- "spoIID"
   }, error = function(e) {})
   ### *** spoiid_gene
 
@@ -462,14 +462,14 @@ sporulation_gene_name <- function(df){
     spoiim_gene <- spoiim_ko
   }, error = function(e) {})
   tryCatch({
-    spoiim_gene$consensus_name_this_study <- "spoIIM"
+    spoiim_gene$spo_gene_name <- "spoIIM"
   }, error = function(e) {})
   ### *** spoiim_gene
 
   tryCatch({
     ### spoiip ###
     spoiip_gene <- df %>% filter(grepl('spoiip', tolower(Preferred_name)))
-    spoiip_gene$consensus_name_this_study <- "spoIIP"
+    spoiip_gene$spo_gene_name <- "spoIIP"
     ### *** spoiip_gene
   }, error = function(e) {})
 
@@ -480,7 +480,7 @@ sporulation_gene_name <- function(df){
     spoiiq_gene <- spoiiq_ko
   }, error = function(e) {})
   tryCatch({
-    spoiiq_gene$consensus_name_this_study <- "spoIIQ"
+    spoiiq_gene$spo_gene_name <- "spoIIQ"
   }, error = function(e) {})
   ### *** spoiiq_gene
 
@@ -492,7 +492,7 @@ sporulation_gene_name <- function(df){
     spoiiiaa_gene <- rbind(spoiiiaa_gene,spoiiiaa_ko)
   }, error = function(e) {})
   tryCatch({
-    spoiiiaa_gene$consensus_name_this_study <- "spoIIIAA"
+    spoiiiaa_gene$spo_gene_name <- "spoIIIAA"
   }, error = function(e) {})
   ### *** spoiiiaa_gene
 
@@ -503,7 +503,7 @@ sporulation_gene_name <- function(df){
     spoiiiab_gene <- spoiiiab_ko
   }, error = function(e) {})
   tryCatch({
-    spoiiiab_gene$consensus_name_this_study <- "spoIIIAB"
+    spoiiiab_gene$spo_gene_name <- "spoIIIAB"
   }, error = function(e) {})
   ### *** spoiiiab_gene
 
@@ -515,7 +515,7 @@ sporulation_gene_name <- function(df){
     spoiiiac_gene <- rbind(spoiiiac_gene,spoiiiac_ko)
   }, error = function(e) {})
   tryCatch({
-    spoiiiac_gene$consensus_name_this_study <- "spoIIIAC"
+    spoiiiac_gene$spo_gene_name <- "spoIIIAC"
   }, error = function(e) {})
   ### *** spoiiiac_gene
 
@@ -526,7 +526,7 @@ sporulation_gene_name <- function(df){
     spoiiiad_gene <- spoiiiad_ko
   }, error = function(e) {})
   tryCatch({
-    spoiiiad_gene$consensus_name_this_study <- "spoiiiAD"
+    spoiiiad_gene$spo_gene_name <- "spoiiiAD"
   }, error = function(e) {})
   ### *** spoiiiad_gene
 
@@ -538,7 +538,7 @@ sporulation_gene_name <- function(df){
     spoiiiae_gene <- rbind(spoiiiae_gene,spoiiiae_ko)
   }, error = function(e) {})
   tryCatch({
-    spoiiiae_gene$consensus_name_this_study <- "spoIIIAE"
+    spoiiiae_gene$spo_gene_name <- "spoIIIAE"
   }, error = function(e) {})
   ### *** spoiiiae_gene
 
@@ -549,7 +549,7 @@ sporulation_gene_name <- function(df){
     spoiiiaf_gene <- spoiiiaf_ko
   }, error = function(e) {})
   tryCatch({
-    spoiiiaf_gene$consensus_name_this_study <- "spoIIIAF"
+    spoiiiaf_gene$spo_gene_name <- "spoIIIAF"
   }, error = function(e) {})
   ### *** spoiiiaf_gene
 
@@ -561,7 +561,7 @@ sporulation_gene_name <- function(df){
     spoiiiag_gene <- rbind(spoiiiag_gene,spoiiiag_ko)
   }, error = function(e) {})
   tryCatch({
-    spoiiiag_gene$consensus_name_this_study <- "spoIIIAG"
+    spoiiiag_gene$spo_gene_name <- "spoIIIAG"
   }, error = function(e) {})
   ### *** spoiiiag_gene
 
@@ -572,7 +572,7 @@ sporulation_gene_name <- function(df){
     spoiiiah_gene <- spoiiiah_ko
   }, error = function(e) {})
   tryCatch({
-    spoiiiah_gene$consensus_name_this_study <- "spoIIIAH"
+    spoiiiah_gene$spo_gene_name <- "spoIIIAH"
   }, error = function(e) {})
   ### *** spoiiiah_gene
 
@@ -583,14 +583,14 @@ sporulation_gene_name <- function(df){
     spoiib_gene <- spoiib_ko
   }, error = function(e) {})
   tryCatch({
-    spoiib_gene$consensus_name_this_study <- "spoIIB"
+    spoiib_gene$spo_gene_name <- "spoIIB"
   }, error = function(e) {})
   ### *** spoiib_gene
 
   tryCatch({
     ### yunb ###
     yunb_gene <- df %>% filter(grepl('yunb', tolower(Preferred_name)))
-    yunb_gene$consensus_name_this_study <- "yunB"
+    yunb_gene$spo_gene_name <- "yunB"
     ### *** yunb_gene
   }, error = function(e) {})
 
@@ -608,7 +608,7 @@ sporulation_gene_name <- function(df){
     Engulfment <- rbind(Engulfment, spoiiiah_gene)
     Engulfment <- rbind(Engulfment, spoiib_gene)
     Engulfment <- rbind(Engulfment, yunb_gene)
-    Engulfment$process <- "Engulfment"
+    Engulfment$spo_process <- "Engulfment"
   }, error = function(e) {})
 
   ##### sigF regulon #####
@@ -622,63 +622,63 @@ sporulation_gene_name <- function(df){
     spoiir_gene <- spoiir_ko
   }, error = function(e) {})
   tryCatch({
-    spoiir_gene$consensus_name_this_study <- "spoIIR"
+    spoiir_gene$spo_gene_name <- "spoIIR"
   }, error = function(e) {})
   ### *** spoiir_gene
 
   tryCatch({
     ### spoivb ###
     spoivb_gene <- df %>% filter(grepl('spoivb', tolower(Preferred_name)))
-    spoivb_gene$consensus_name_this_study <- "spoIVB"
+    spoivb_gene$spo_gene_name <- "spoIVB"
     ### *** spoivb_gene
   }, error = function(e) {})
 
   tryCatch({
     ### spovt ###
     spovt_gene <- df %>% filter(grepl('spovt', tolower(Preferred_name)))
-    spovt_gene$consensus_name_this_study <- "spoVT"
+    spovt_gene$spo_gene_name <- "spoVT"
     ### *** spovt_gene
   }, error = function(e) {})
 
   tryCatch({
     ### dacf ###
     dacf_gene <- df %>% filter(grepl('dacf', tolower(Preferred_name)))
-    dacf_gene$consensus_name_this_study <- "dacF"
+    dacf_gene$spo_gene_name <- "dacF"
     ### *** dacf_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ytfj ###
     ytfj_gene <- df %>% filter(grepl('ytfj', tolower(Preferred_name)))
-    ytfj_gene$consensus_name_this_study <- "ytfJ"
+    ytfj_gene$spo_gene_name <- "ytfJ"
     ### *** ytfj_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yhcv ###
     yhcv_gene <- df %>% filter(grepl('yhcv', tolower(Preferred_name)))
-    yhcv_gene$consensus_name_this_study <- "yhcV"
+    yhcv_gene$spo_gene_name <- "yhcV"
     ### *** yhcv_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yloC ###
     yloc_gene <- df %>% filter(grepl('yloc', tolower(Preferred_name)))
-    yloc_gene$consensus_name_this_study <- "yloC"
+    yloc_gene$spo_gene_name <- "yloC"
     ### *** yloc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### bofC ###
     bofc_gene <- df %>% filter(grepl('bofc', tolower(Preferred_name)))
-    bofc_gene$consensus_name_this_study <- "bofC"
+    bofc_gene$spo_gene_name <- "bofC"
     ### *** bofc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### rsfA ###
     rsfa_gene <- df %>% filter(grepl('rsfa', tolower(Preferred_name)))
-    rsfa_gene$consensus_name_this_study <- "rsfA"
+    rsfa_gene$spo_gene_name <- "rsfA"
     ### *** rsfa_gene
   }, error = function(e) {})
 
@@ -686,32 +686,32 @@ sporulation_gene_name <- function(df){
     ### fin ###
     fin_gene <- df %>% filter(grepl('fin', tolower(Preferred_name)))
     yabk_gene <- df %>% filter(grepl('yabk', tolower(Preferred_name)))
-    yabk_gene$consensus_name_this_study <- "fin/yabk"
+    yabk_gene$spo_gene_name <- "fin/yabk"
     fin_gene <- rbind(fin_gene, yabk_gene)
   }, error = function(e) {})
   tryCatch({
-    fin_gene$consensus_name_this_study <- "fin/yabk"
+    fin_gene$spo_gene_name <- "fin/yabk"
   }, error = function(e) {})
   ### *** fin_gene
 
   tryCatch({
     ### ymfJ ###
     ymfj_gene <- df %>% filter(grepl('ymfj', tolower(Preferred_name)))
-    ymfj_gene$consensus_name_this_study <- "ymfJ"
+    ymfj_gene$spo_gene_name <- "ymfJ"
     ### *** ymfj_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yqhG ###
     yqhg_gene <- df %>% filter(grepl('yqhg', tolower(Preferred_name)))
-    yqhg_gene$consensus_name_this_study <- "yqhG"
+    yqhg_gene$spo_gene_name <- "yqhG"
     ### *** yqhg_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ywzB ###
     ywzb_gene <- df %>% filter(grepl('ywzb', tolower(Preferred_name)))
-    ywzb_gene$consensus_name_this_study <- "ywzB"
+    ywzb_gene$spo_gene_name <- "ywzB"
     ### *** ywzb_gene
   }, error = function(e) {})
 
@@ -728,7 +728,7 @@ sporulation_gene_name <- function(df){
     sigF_regulon <- rbind(sigF_regulon, ymfj_gene)
     sigF_regulon <- rbind(sigF_regulon, yqhg_gene)
     sigF_regulon <- rbind(sigF_regulon, ywzb_gene)
-    sigF_regulon$process <- "sigF_regulon"
+    sigF_regulon$spo_process <- "sigF_regulon"
   }, error = function(e) {})
 
   ##### sigG regulon #####
@@ -742,7 +742,7 @@ sporulation_gene_name <- function(df){
     spovac_gene <- rbind(spovac_gene, spovac_ko)
   }, error = function(e) {})
   tryCatch({
-    spovac_gene$consensus_name_this_study <- "spoVAC"
+    spovac_gene$spo_gene_name <- "spoVAC"
   }, error = function(e) {})
   ### *** spovac_gene
 
@@ -754,7 +754,7 @@ sporulation_gene_name <- function(df){
     spovad_gene <- rbind(spovad_gene, spovad_ko)
   }, error = function(e) {})
   tryCatch({
-    spovad_gene$consensus_name_this_study <- "spoVAD"
+    spovad_gene$spo_gene_name <- "spoVAD"
   }, error = function(e) {})
   ### *** spovad_gene
 
@@ -765,7 +765,7 @@ sporulation_gene_name <- function(df){
     spovaeb_gene <- spovaeb_ko
   }, error = function(e) {})
   tryCatch({
-    spovaeb_gene$consensus_name_this_study <- "spoVAEB"
+    spovaeb_gene$spo_gene_name <- "spoVAEB"
   }, error = function(e) {})
   ### *** spovaeb_gene
 
@@ -776,7 +776,7 @@ sporulation_gene_name <- function(df){
     nfo_gene <- nfo_ko
   }, error = function(e) {})
   tryCatch({
-    nfo_gene$consensus_name_this_study <- "nfo"
+    nfo_gene$spo_gene_name <- "nfo"
   }, error = function(e) {})
   ### *** nfo_gene
 
@@ -785,7 +785,7 @@ sporulation_gene_name <- function(df){
     mgla_gene <- df %>% filter(grepl('mgla', tolower(Preferred_name)))
     sspa_gene <- df %>% filter(grepl('sspa', tolower(Preferred_name)))
     mgla_gene <- rbind(mgla_gene, sspa_gene)
-    mgla_gene$consensus_name_this_study <- "mglA / sspA"
+    mgla_gene$spo_gene_name <- "mglA / sspA"
     ### *** mgla_gene
   }, error = function(e) {})
 
@@ -797,21 +797,21 @@ sporulation_gene_name <- function(df){
     sspb_gene <- rbind(sspb_gene, sspb_ko)
   }, error = function(e) {})
   tryCatch({
-    sspb_gene$consensus_name_this_study <- "sspB"
+    sspb_gene$spo_gene_name <- "sspB"
   }, error = function(e) {})
   ### *** sspb_gene
 
   tryCatch({
     ### sspC ###
     sspc_gene <- df %>% filter(grepl('sspc', tolower(Preferred_name)))
-    sspc_gene$consensus_name_this_study <- "sspC"
+    sspc_gene$spo_gene_name <- "sspC"
     ### *** sspc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### spovaa ###
     spovaa_gene <- df %>% filter(grepl('spovaa', tolower(Preferred_name)))
-    spovaa_gene$consensus_name_this_study <- "spoVAA"
+    spovaa_gene$spo_gene_name <- "spoVAA"
     ### *** spovaa_gene
   }, error = function(e) {})
 
@@ -822,14 +822,14 @@ sporulation_gene_name <- function(df){
     spovab_gene <- spovab_ko
   }, error = function(e) {})
   tryCatch({
-    spovab_gene$consensus_name_this_study <- "spoVAB"
+    spovab_gene$spo_gene_name <- "spoVAB"
   }, error = function(e) {})
   ### *** spovab_gene
 
   tryCatch({
     ### spovaf ###
     spovaf_gene <- df %>% filter(grepl('spovaf', tolower(Preferred_name)))
-    spovaf_gene$consensus_name_this_study <- "spoVAF"
+    spovaf_gene$spo_gene_name <- "spoVAF"
     ### *** spovaf_gene
   }, error = function(e) {})
 
@@ -840,7 +840,7 @@ sporulation_gene_name <- function(df){
     sspf_gene <- sspf_ko
   }, error = function(e) {})
   tryCatch({
-    sspf_gene$consensus_name_this_study <- "sspF"
+    sspf_gene$spo_gene_name <- "sspF"
   }, error = function(e) {})
   ### *** sspf_gene
 
@@ -851,14 +851,14 @@ sporulation_gene_name <- function(df){
     ssph_gene <- ssph_ko
   }, error = function(e) {})
   tryCatch({
-    ssph_gene$consensus_name_this_study <- "sspH"
+    ssph_gene$spo_gene_name <- "sspH"
   }, error = function(e) {})
   ### *** ssph_gene
 
   tryCatch({
     ### sspi ###
     sspi_gene <- df %>% filter(grepl('sspi', tolower(Preferred_name)))
-    sspi_gene$consensus_name_this_study <- "sspI"
+    sspi_gene$spo_gene_name <- "sspI"
     ### *** sspi_gene
   }, error = function(e) {})
 
@@ -869,7 +869,7 @@ sporulation_gene_name <- function(df){
     tlp_gene <- tlp_ko
   }, error = function(e) {})
   tryCatch({
-    tlp_gene$consensus_name_this_study <- "tlp"
+    tlp_gene$spo_gene_name <- "tlp"
   }, error = function(e) {})
   ### *** tlp_gene
 
@@ -887,7 +887,7 @@ sporulation_gene_name <- function(df){
     sigG_regulon <- rbind(sigG_regulon, sspc_gene)
     sigG_regulon <- rbind(sigG_regulon, sspi_gene)
     sigG_regulon <- rbind(sigG_regulon, sspf_gene)
-    sigG_regulon$process <- "sigG_regulon"
+    sigG_regulon$spo_process <- "sigG_regulon"
   }, error = function(e) {})
 
   ##### sigE regulon #####
@@ -896,7 +896,7 @@ sporulation_gene_name <- function(df){
   tryCatch({
     ### sigk ###
     sigk_gene <- df %>% filter(grepl('sigk', tolower(Preferred_name)))
-    sigk_gene$consensus_name_this_study <- "sigK"
+    sigk_gene$spo_gene_name <- "sigK"
     ### *** sigk_gene
   }, error = function(e) {})
 
@@ -907,7 +907,7 @@ sporulation_gene_name <- function(df){
     spoiiid_gene <- spoiiid_ko
   }, error = function(e) {})
   tryCatch({
-    spoiiid_gene$consensus_name_this_study <- "spoIIID"
+    spoiiid_gene$spo_gene_name <- "spoIIID"
   }, error = function(e) {})
   ### *** spoiiid_gene
 
@@ -919,7 +919,7 @@ sporulation_gene_name <- function(df){
     spoivfb_gene <- rbind(spoivfb_gene, spoivfb_ko)
   }, error = function(e) {})
   tryCatch({
-    spoivfb_gene$consensus_name_this_study <- "spoIVFB"
+    spoivfb_gene$spo_gene_name <- "spoIVFB"
   }, error = function(e) {})
   ### *** spoivfb_gene
 
@@ -930,7 +930,7 @@ sporulation_gene_name <- function(df){
     spovb_gene <- spovb_ko
   }, error = function(e) {})
   tryCatch({
-    spovb_gene$consensus_name_this_study <- "spoVB"
+    spovb_gene$spo_gene_name <- "spoVB"
   }, error = function(e) {})
   ### *** spovb_gene
 
@@ -941,7 +941,7 @@ sporulation_gene_name <- function(df){
     ftsw_gene <- ftsw_ko
   }, error = function(e) {})
   tryCatch({
-    ftsw_gene$consensus_name_this_study <- "ftsW"
+    ftsw_gene$spo_gene_name <- "ftsW"
   }, error = function(e) {})
   ### *** ftsw_gene
 
@@ -953,7 +953,7 @@ sporulation_gene_name <- function(df){
     spoVK_gene <- rbind(spoVK_gene,spoVK_ko)
   }, error = function(e) {})
   tryCatch({
-    spoVK_gene$consensus_name_this_study <- "spoVK"
+    spoVK_gene$spo_gene_name <- "spoVK"
   }, error = function(e) {})
   ### *** spoVK_gene
 
@@ -964,14 +964,14 @@ sporulation_gene_name <- function(df){
     ctpb_gene <- ctpb_ko
   }, error = function(e) {})
   tryCatch({
-    ctpb_gene$consensus_name_this_study <- "ctpB"
+    ctpb_gene$spo_gene_name <- "ctpB"
   }, error = function(e) {})
   ### *** ctpb_gene
 
   tryCatch({
     ### spoIVFA ###
     spoivfa_gene <- df %>% filter(grepl('spoivfa', tolower(Preferred_name)))
-    spoivfa_gene$consensus_name_this_study <- "spoIVFA"
+    spoivfa_gene$spo_gene_name <- "spoIVFA"
     ### *** spoivfa_gene
   }, error = function(e) {})
 
@@ -982,28 +982,28 @@ sporulation_gene_name <- function(df){
     bofa_gene <- bofa_ko
   }, error = function(e) {})
   tryCatch({
-    bofa_gene$consensus_name_this_study <- "bofA"
+    bofa_gene$spo_gene_name <- "bofA"
   }, error = function(e) {})
   ### *** bofa_gene
 
   tryCatch({
     ### dacb ###
     dacb_gene <- df %>% filter(grepl('dacb', tolower(Preferred_name)))
-    dacb_gene$consensus_name_this_study <- "dacB"
+    dacb_gene$spo_gene_name <- "dacB"
     ### *** dacb_gene
   }, error = function(e) {})
 
   tryCatch({
     ### alr ###
     alr_gene <- df %>% filter(grepl('alr', tolower(Preferred_name)))
-    alr_gene$consensus_name_this_study <- "alr"
+    alr_gene$spo_gene_name <- "alr"
     ### *** alr_gene
   }, error = function(e) {})
 
   tryCatch({
     ### spmA ###
     spmA_gene <- df %>% filter(grepl('spma', tolower(Preferred_name)))
-    spmA_gene$consensus_name_this_study <- "spmA"
+    spmA_gene$spo_gene_name <- "spmA"
     ### *** spmA_gene
   }, error = function(e) {})
 
@@ -1014,70 +1014,70 @@ sporulation_gene_name <- function(df){
     spmB_gene <- spmB_ko
   }, error = function(e) {})
   tryCatch({
-    spmB_gene$consensus_name_this_study <- "spmB"
+    spmB_gene$spo_gene_name <- "spmB"
   }, error = function(e) {})
   ### *** spmB_gene
 
   tryCatch({
     ### yisY ###
     yisY_gene <- df %>% filter(grepl('yisy', tolower(Preferred_name)))
-    yisY_gene$consensus_name_this_study <- "yisY"
+    yisY_gene$spo_gene_name <- "yisY"
     ### *** yisY_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yqfu ###
     yqfu_gene <- df %>% filter(grepl('yqfu', tolower(Preferred_name)))
-    yqfu_gene$consensus_name_this_study <- "yqfU"
+    yqfu_gene$spo_gene_name <- "yqfU"
     ### *** yqfu_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ylmc ###
     ylmc_gene <- df %>% filter(grepl('ylmc', tolower(Preferred_name)))
-    ylmc_gene$consensus_name_this_study <- "ylmC"
+    ylmc_gene$spo_gene_name <- "ylmC"
     ### *** ylmc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ytaf ###
     ytaf_gene <- df %>% filter(grepl('ytaf', tolower(Preferred_name)))
-    ytaf_gene$consensus_name_this_study <- "ytaF"
+    ytaf_gene$spo_gene_name <- "ytaF"
     ### *** ytaf_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ytvi ###
     ytvi_gene <- df %>% filter(grepl('ytvi', tolower(Preferred_name)))
-    ytvi_gene$consensus_name_this_study <- "ytvI"
+    ytvi_gene$spo_gene_name <- "ytvI"
     ### *** ytvi_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ykvi ###
     ykvi_gene <- df %>% filter(grepl('ykvi', tolower(Preferred_name)))
-    ykvi_gene$consensus_name_this_study <- "ykvI"
+    ykvi_gene$spo_gene_name <- "ykvI"
     ### *** ykvi_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ydca ###
     ydca_gene <- df %>% filter(grepl('ydca', tolower(Preferred_name)))
-    ydca_gene$consensus_name_this_study <- "ydca"
+    ydca_gene$spo_gene_name <- "ydca"
     ### *** ydca_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ydcc ###
     ydcc_gene <- df %>% filter(grepl('ydcc', tolower(Preferred_name)))
-    ydcc_gene$consensus_name_this_study <- "ydcc"
+    ydcc_gene$spo_gene_name <- "ydcc"
     ### *** ydcc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yhbh ###
     yhbh_gene <- df %>% filter(grepl('yhbh', tolower(Preferred_name)))
-    yhbh_gene$consensus_name_this_study <- "yhbh"
+    yhbh_gene$spo_gene_name <- "yhbh"
     ### *** yhbh_gene
   }, error = function(e) {})
 
@@ -1103,7 +1103,7 @@ sporulation_gene_name <- function(df){
     sigE_regulon <- rbind(sigE_regulon, ydca_gene)
     sigE_regulon <- rbind(sigE_regulon, ydcc_gene)
     sigE_regulon <- rbind(sigE_regulon, yhbh_gene)
-    sigE_regulon$process <- "sigE_regulon"
+    sigE_regulon$spo_process <- "sigE_regulon"
   }, error = function(e) {})
 
   ##### sigK regulon #####
@@ -1116,27 +1116,27 @@ sporulation_gene_name <- function(df){
     spovfa_gene <- spovfa_ko
   }, error = function(e) {})
   tryCatch({
-    spovfa_gene$consensus_name_this_study <- "spoVFA"
+    spovfa_gene$spo_gene_name <- "spoVFA"
   }, error = function(e) {})
   ### *** spovfa_gene
 
   tryCatch({
     spovfb_gene <- df %>% filter(grepl('spovfb', tolower(Preferred_name)))
-    spovfb_gene$consensus_name_this_study <- "spoVFB"
+    spovfb_gene$spo_gene_name <- "spoVFB"
     ### *** spovfb_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ykud ###
     ykud_gene <- df %>% filter(grepl('ykud', tolower(Preferred_name)))
-    ykud_gene$consensus_name_this_study <- "ykuD"
+    ykud_gene$spo_gene_name <- "ykuD"
     ### *** ykud_gene
   }, error = function(e) {})
 
   tryCatch({
     sigK_regulon <- rbind(spovfa_gene, spovfb_gene)
     sigK_regulon <- rbind(sigK_regulon, ykud_gene)
-    sigK_regulon$process <- "sigK_regulon"
+    sigK_regulon$spo_process <- "sigK_regulon"
   }, error = function(e) {})
 
 
@@ -1146,66 +1146,66 @@ sporulation_gene_name <- function(df){
   tryCatch({
     ### spovd ###
     spovd_gene <- df %>% filter(grepl('spovd', tolower(Preferred_name)))
-    spovd_gene$consensus_name_this_study <- "spoVD"
+    spovd_gene$spo_gene_name <- "spoVD"
     ### *** spovd_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ylbj ###
     ylbj_gene <- df %>% filter(grepl('ylbj', tolower(Preferred_name)))
-    ylbj_gene$consensus_name_this_study <- "ylbJ"
+    ylbj_gene$spo_gene_name <- "ylbJ"
     ### *** ylbj_gene
   }, error = function(e) {})
 
   tryCatch({
     ### cwlc ###
     cwlc_gene <- df %>% filter(grepl('cwlc', tolower(Preferred_name)))
-    cwlc_gene$consensus_name_this_study <- "cwlC"
+    cwlc_gene$spo_gene_name <- "cwlC"
   }, error = function(e) {})
 
   tryCatch({
     cwld_gene <- df %>% filter(grepl('cwld', tolower(Preferred_name)))
-    cwld_gene$consensus_name_this_study <- "cwlD"
+    cwld_gene$spo_gene_name <- "cwlD"
   }, error = function(e) {})
 
   tryCatch({
     cwldc_gene <- rbind(cwlc_gene, cwld_gene)
-    cwldc_gene$consensus_name_this_study <- "cwlC/cwlD"
+    cwldc_gene$spo_gene_name <- "cwlC/cwlD"
     ### *** cwldc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### lyth ###
     lyth_gene <- df %>% filter(grepl('lyth', tolower(Preferred_name)))
-    lyth_gene$consensus_name_this_study <- "lytH"
+    lyth_gene$spo_gene_name <- "lytH"
     ### *** lyth_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yabp ###
     yabp_gene <- df %>% filter(grepl('yabp', tolower(Preferred_name)))
-    yabp_gene$consensus_name_this_study <- "yabP"
+    yabp_gene$spo_gene_name <- "yabP"
     ### *** yabp_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yabq ###
     yabq_gene <- df %>% filter(grepl('yabq', tolower(Preferred_name)))
-    yabq_gene$consensus_name_this_study <- "yabQ"
+    yabq_gene$spo_gene_name <- "yabQ"
     ### *** yabq_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yqfc ###
     yqfc_gene <- df %>% filter(grepl('yqfc', tolower(Preferred_name)))
-    yqfc_gene$consensus_name_this_study <- "yqfC"
+    yqfc_gene$spo_gene_name <- "yqfC"
     ### *** yqfc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yqfD ###
     yqfD_gene <- df %>% filter(grepl('yqfd', tolower(Preferred_name)))
-    yqfD_gene$consensus_name_this_study <- "yqfD"
+    yqfD_gene$spo_gene_name <- "yqfD"
     ### *** yqfD_gene
   }, error = function(e) {})
 
@@ -1214,7 +1214,7 @@ sporulation_gene_name <- function(df){
     cotd_gene <- df %>% filter(grepl('cotd', tolower(Preferred_name)))
     cotd_ko <- df %>% filter(grepl('06327', tolower(KEGG_ko)))
     cotd_gene <- cotd_ko
-    cotd_gene$consensus_name_this_study <- "cotD"
+    cotd_gene$spo_gene_name <- "cotD"
   }, error = function(e) {})
   ### *** cotd_gene
 
@@ -1227,7 +1227,7 @@ sporulation_gene_name <- function(df){
     spore_cortex <- rbind(spore_cortex, yqfc_gene)
     spore_cortex <- rbind(spore_cortex, yqfD_gene)
     spore_cortex <- rbind(spore_cortex, cotd_gene)
-    spore_cortex$process <- "spore_cortex"
+    spore_cortex$spo_process <- "spore_cortex"
   }, error = function(e) {})
 
   ##### spore coat #####
@@ -1240,7 +1240,7 @@ sporulation_gene_name <- function(df){
     spoIVA_gene <- spoIVA_ko
   }, error = function(e) {})
   tryCatch({
-    spoIVA_gene$consensus_name_this_study <- "spoIVA"
+    spoIVA_gene$spo_gene_name <- "spoIVA"
   }, error = function(e) {})
   ### *** spoIVA_gene
 
@@ -1251,14 +1251,14 @@ sporulation_gene_name <- function(df){
     cotjc_gene <- cotjc_ko
   }, error = function(e) {})
   tryCatch({
-    cotjc_gene$consensus_name_this_study <- "cotJC"
+    cotjc_gene$spo_gene_name <- "cotJC"
   }, error = function(e) {})
   ### *** cotjc_gene
 
   tryCatch({
     ### cotsa ###
     cotsa_gene <- df %>% filter(grepl('cotsa', tolower(Preferred_name)))
-    cotsa_gene$consensus_name_this_study <- "cotSA"
+    cotsa_gene$spo_gene_name <- "cotSA"
     ### *** cotsa_gene
   }, error = function(e) {})
 
@@ -1269,35 +1269,35 @@ sporulation_gene_name <- function(df){
     gerM_gene <- gerM_ko
   }, error = function(e) {})
   tryCatch({
-    gerM_gene$consensus_name_this_study <- "gerM"
+    gerM_gene$spo_gene_name <- "gerM"
   }, error = function(e) {})
   ### *** gerM_gene
 
   tryCatch({
     ### lipc ###
     lipc_gene <- df %>% filter(grepl('lipc', tolower(Preferred_name)))
-    lipc_gene$consensus_name_this_study <- "lipC"
+    lipc_gene$spo_gene_name <- "lipC"
     ### *** lipc_gene
   }, error = function(e) {})
 
   tryCatch({
     ### safa ###
     safa_gene <- df %>% filter(grepl('safa', tolower(Preferred_name)))
-    safa_gene$consensus_name_this_study <- "safA"
+    safa_gene$spo_gene_name <- "safA"
     ### *** safa_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ydhd ###
     ydhd_gene <- df %>% filter(grepl('ydhd', tolower(Preferred_name)))
-    ydhd_gene$consensus_name_this_study <- "ydhD"
+    ydhd_gene$spo_gene_name <- "ydhD"
     ### *** ydhd_gene
   }, error = function(e) {})
 
   tryCatch({
     ### yhax ###
     yhax_gene <- df %>% filter(grepl('yhax', tolower(Preferred_name)))
-    yhax_gene$consensus_name_this_study <- "yhaX"
+    yhax_gene$spo_gene_name <- "yhaX"
     ### *** yhax_gene
   }, error = function(e) {})
 
@@ -1308,14 +1308,14 @@ sporulation_gene_name <- function(df){
     spovid_gene <- spovid_ko
   }, error = function(e) {})
   tryCatch({
-    spovid_gene$consensus_name_this_study <- "spoVID"
+    spovid_gene$spo_gene_name <- "spoVID"
   }, error = function(e) {})
   ### *** spovid_gene
 
   tryCatch({
     ### spovif ###
     spovif_gene <- df %>% filter(grepl('spovif', tolower(Preferred_name)))
-    spovif_gene$consensus_name_this_study <- "spoVIF"
+    spovif_gene$spo_gene_name <- "spoVIF"
     ### *** spovif_gene
   }, error = function(e) {})
 
@@ -1326,14 +1326,14 @@ sporulation_gene_name <- function(df){
     cote_gene <- cote_ko
   }, error = function(e) {})
   tryCatch({
-    cote_gene$consensus_name_this_study <- "cotE"
+    cote_gene$spo_gene_name <- "cotE"
   }, error = function(e) {})
   ### *** cote_gene
 
   tryCatch({
     ### cotja ###
     cotja_gene <- df %>% filter(grepl('cotja', tolower(Preferred_name)))
-    cotja_gene$consensus_name_this_study <- "cotJA"
+    cotja_gene$spo_gene_name <- "cotJA"
     ### *** cotja_gene
   }, error = function(e) {})
 
@@ -1344,7 +1344,7 @@ sporulation_gene_name <- function(df){
     cotjb_gene <- cotjb_ko
   }, error = function(e) {})
   tryCatch({
-    cotjb_gene$consensus_name_this_study <- "cotJB"
+    cotjb_gene$spo_gene_name <- "cotJB"
   }, error = function(e) {})
   ### *** cotjb_gene
 
@@ -1355,14 +1355,14 @@ sporulation_gene_name <- function(df){
     cotp_gene <- cotp_ko
   }, error = function(e) {})
   tryCatch({
-    cotp_gene$consensus_name_this_study <- "hsps"
+    cotp_gene$spo_gene_name <- "hsps"
   }, error = function(e) {})
   ### *** cotp_gene
 
   tryCatch({
     ### yhjr ###
     yhjr_gene <- df %>% filter(grepl('yhjr', tolower(Preferred_name)))
-    yhjr_gene$consensus_name_this_study <- "yhjR"
+    yhjr_gene$spo_gene_name <- "yhjR"
     ### *** yhjr_gene
   }, error = function(e) {})
 
@@ -1381,7 +1381,7 @@ sporulation_gene_name <- function(df){
     spore_coat <- rbind(spore_coat, cote_gene)
     spore_coat <- rbind(spore_coat, cotja_gene)
     spore_coat <- rbind(spore_coat, cotp_gene)
-    spore_coat$process <- "spore_coat"
+    spore_coat$spo_process <- "spore_coat"
   }, error = function(e) {})
 
   ##### germination #####
@@ -1390,7 +1390,7 @@ sporulation_gene_name <- function(df){
   tryCatch({
     ### gera ###
     gera_gene <- df %>% filter(grepl('gera', tolower(Preferred_name)))
-    gera_gene$consensus_name_this_study <- "gerA"
+    gera_gene$spo_gene_name <- "gerA"
     ### *** gera_gene
   }, error = function(e) {})
 
@@ -1401,7 +1401,7 @@ sporulation_gene_name <- function(df){
     gerc_gene <- gerc_ko
   }, error = function(e) {})
   tryCatch({
-    gerc_gene$consensus_name_this_study <- "gerC"
+    gerc_gene$spo_gene_name <- "gerC"
   }, error = function(e) {})
   ### *** gerc_gene
 
@@ -1412,7 +1412,7 @@ sporulation_gene_name <- function(df){
     lgt_gene <- lgt_ko
   }, error = function(e) {})
   tryCatch({
-    lgt_gene$consensus_name_this_study <- "lgt"
+    lgt_gene$spo_gene_name <- "lgt"
   }, error = function(e) {})
   ### *** lgt_gene
 
@@ -1423,24 +1423,24 @@ sporulation_gene_name <- function(df){
     gpr_gene <- gpr_ko
   }, error = function(e) {})
   tryCatch({
-    gpr_gene$consensus_name_this_study <- "gpr"
+    gpr_gene$spo_gene_name <- "gpr"
   }, error = function(e) {})
   ### *** gpr_gene
 
   tryCatch({
     ### cwlj ###
     cwlj_gene <- df %>% filter(grepl('cwlj', tolower(Preferred_name)))
-    cwlj_gene$consensus_name_this_study <- "cwlJ"
+    cwlj_gene$spo_gene_name <- "cwlJ"
   }, error = function(e) {})
 
   tryCatch({
     sleb_gene <- df %>% filter(grepl('sleb', tolower(Preferred_name)))
-    sleb_gene$consensus_name_this_study <- "sleB"
+    sleb_gene$spo_gene_name <- "sleB"
   }, error = function(e) {})
 
   tryCatch({
     cwlj_gene <- rbind(cwlj_gene, sleb_gene)
-    cwlj_gene$consensus_name_this_study <- "cwlJ/sleB"
+    cwlj_gene$spo_gene_name <- "cwlJ/sleB"
     ### *** cwlj_gene
   }, error = function(e) {})
 
@@ -1451,42 +1451,42 @@ sporulation_gene_name <- function(df){
     cspa_gene <- cspa_ko
   }, error = function(e) {})
   tryCatch({
-    cspa_gene$consensus_name_this_study <- "CSD"
+    cspa_gene$spo_gene_name <- "CSD"
   }, error = function(e) {})
   ### *** cspa_gene
 
   tryCatch({
     ### gdh ###
     gdh_gene <- df[df$Preferred_name == 'gdh',]
-    gdh_gene$consensus_name_this_study <- "gdh"
+    gdh_gene$spo_gene_name <- "gdh"
     ### *** gdh_gene
   }, error = function(e) {})
 
   tryCatch({
     ### gerd ###
     gerd_gene <- df %>% filter(grepl('gerd', tolower(Preferred_name)))
-    gerd_gene$consensus_name_this_study <- "gerD"
+    gerd_gene$spo_gene_name <- "gerD"
     ### *** gerd_gene
   }, error = function(e) {})
 
   tryCatch({
     ### gere ###
     gere_gene <- df %>% filter(grepl('gere', tolower(Preferred_name)))
-    gere_gene$consensus_name_this_study <- "gerE"
+    gere_gene$spo_gene_name <- "gerE"
     ### *** gere_gene
   }, error = function(e) {})
 
   tryCatch({
     ### gerq ###
     gerq_gene <- df %>% filter(grepl('gerq', tolower(Preferred_name)))
-    gerq_gene$consensus_name_this_study <- "gerQ"
+    gerq_gene$spo_gene_name <- "gerQ"
     ### *** gerq_gene
   }, error = function(e) {})
 
   tryCatch({
     ### ypeb ###
     ypeb_gene <- df %>% filter(grepl('ypeb', tolower(Preferred_name)))
-    ypeb_gene$consensus_name_this_study <- "ypeB"
+    ypeb_gene$spo_gene_name <- "ypeB"
     ### *** ypeb_gene
   }, error = function(e) {})
 
@@ -1499,7 +1499,7 @@ sporulation_gene_name <- function(df){
     germination <- rbind(germination, lgt_gene)
     germination <- rbind(germination, gerd_gene)
     germination <- rbind(germination, gere_gene)
-    germination$process <- "germination"
+    germination$spo_process <- "germination"
   }, error = function(e) {})
 
   tryCatch({
@@ -1513,6 +1513,8 @@ sporulation_gene_name <- function(df){
     df <- rbind(df, spore_cortex)
     df <- rbind(df, germination)
   }, error = function(e) {})
+
+  df <- df %>% dplyr::filter(!is.na(genome_ID))
 
   return(df)
 }
