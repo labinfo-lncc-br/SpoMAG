@@ -55,12 +55,12 @@ devtools::install_github("labinfo-lncc-br/SpoMAG")
 
 SpoMAG depends on the following packages:
 
-- dplyr, version XXX
-- tidyr, version XXX
-- tibble, version XXX
-- readr, version XXX
-- caret, version XXX
-- randomForest, version XXX
+- dplyr, version 1.14
+- tidyr, version 1.3.1
+- tibble, version 3.2.1
+- readr, version 2.1.5
+- caret, version 7.0.1
+- randomForest, version 4.7.1.2
 
 
 ### Preprocessing functions in SpoMAG
