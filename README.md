@@ -171,8 +171,11 @@ print(result_aspo)
 ```
 
 The output includes the following columns:
-- Meta_Prediction: final ensemble prediction
-- Meta_Prob_Esporulante: predicted probability of being a spore-former
+- genome_ID: the genome ID you are using as input
+- RF_Prob: Random Forest probability of being a spore-former
+- SVM_Prob: Support Vector Machine probability of being a spore-former
+- Meta_Prob_Sporulating: predicted probability of being a spore-former
+- Meta_Prediction: final ensemble prediction (Sporulating or Non_sporulating)
 
 
 ### Running with more than one genome in the annotation file
