@@ -7,10 +7,10 @@
 sporulation_gene_name(df)
 }
 \arguments{
-\item{df}{A data frame containing MAG annotation with columns like 'Preferred_name' and 'KEGG_ko'.}
+\item{df}{A data frame containing MAG annotation with the columns 'Preferred_name' and 'KEGG_ko'.}
 }
 \value{
-A data frame of sporulation-associated genes with standardized names and process tags.
+A data frame of sporulation-associated genes with standardized names and spo_process tags.
 }
 \description{
 This function identifies sporulation-associated genes in a genome annotation data frame.

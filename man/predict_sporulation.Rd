@@ -4,12 +4,10 @@
 \alias{predict_sporulation}
 \title{Predict Sporulation Potential}
 \usage{
-predict_sporulation(binary_matrix, model_path)
+predict_sporulation(binary_matrix)
 }
 \arguments{
-\item{binary_matrix}{A binary matrix (1/0) indicating gene presence/absence for each MAG. Must include a \code{codigo_genoma} column.}
-
-\item{model_path}{Path to an .RData file containing trained objects: \code{rf_model}, \code{svm_model}, and \code{meta_model}.}
+\item{binary_matrix}{A binary matrix (1/0) indicating gene presence/absence for each MAG. Must include a \code{genome_ID} column.}
 }
 \value{
 A tibble with predicted class and probability of sporulation for each genome.

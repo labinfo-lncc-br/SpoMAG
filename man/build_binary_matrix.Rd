@@ -7,7 +7,7 @@
 build_binary_matrix(df)
 }
 \arguments{
-\item{df}{A data.frame from \code{sporulation_gene_name()} with columns \code{codigo_genoma} and \code{consensus_name_this_study}.}
+\item{df}{A data.frame from \code{sporulation_gene_name()} with columns \code{genome_ID} and \code{spo_gene_name}.}
 }
 \value{
 A wide-format binary matrix with genomes in rows and genes in columns.
