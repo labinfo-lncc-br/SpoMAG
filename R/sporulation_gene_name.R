@@ -4,7 +4,7 @@
 #' It searches for gene names and KEGG Orthology identifiers related to sporulation steps and returns
 #' a data frame with annotated sporulation genes and a consensus name.
 #'
-#' @param df A data frame containing MAG annotation with the columns 'Preferred_name' and 'KEGG_ko'.
+#' @param df A data frame containing MAG annotation with the columns 'Preferred_name', 'KEGG_ko', and 'genome_ID'.
 #'
 #' @return A data frame of sporulation-associated genes with standardized names and spo_process tags.
 #' @import dplyr
