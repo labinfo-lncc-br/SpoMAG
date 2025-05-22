@@ -184,7 +184,6 @@ The genome used for the non-spore-former here is the following:
 
 | genome_ID       | Preferred_name | KEGG_ko |
 |-----------------|----------------|---------|
-| GCF_000006785.2 | spoIIIE        | K03466  |
 | GCF_000006785.2 | spo0A          | K07699  |
 | GCF_000006785.2 | -              | K01056  |
 | GCF_000006785.2 | pth            | -       |
@@ -263,7 +262,6 @@ The genomes used for the non-spore-formers here are the following:
 | genome_ID       | Preferred_name | KEGG_ko |
 |-----------------|----------------|---------|
 | GCF_000010165.1 | spoIIIE        | K03466  |
-| GCF_000010165.1 | spo0A          | K07699  |
 | GCF_000009205.2 | -              | K01056  |
 | GCF_000009205.2 | pth            | -       |
 | ...             | ...            | ...     |
