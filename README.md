@@ -1,9 +1,9 @@
 <p align="center">
-<img src="SpoMAG_title.png" alt="SpoMAG_title" width="600"/>
+<img src="./man/figures/SpoMAG_title.png" alt="SpoMAG_title" width="600"/>
 </p>
 
 <p align="center">
-<img src="SpoMAGlogo.png" alt="SpoMAG_logo" width="600"/>
+<img src="./man/figures/SpoMAGlogo.png" alt="SpoMAG_logo" width="600"/>
 </p>
 
 ## Scope
@@ -28,7 +28,7 @@ SpoMAG predicts the sporulation potential of a given genome through a three-step
 - `predict_sporulation()`, which applies a pre-trained ensemble model combining Random Forest and Support Vector Machine predictions into a stacked meta-classifier. It outputs the classification label (`Sporulating` or `Non_sporulating`), model probabilities, and final ensemble probability value.
 
 <p align="center">
-<img src="SpoMAG_steps.png" alt="SpoMAG_steps" width="900"/>
+<img src="./man/figures/SpoMAG_steps.png" alt="SpoMAG_steps" width="900"/>
 </p>
 
 
