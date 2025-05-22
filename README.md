@@ -196,8 +196,8 @@ The genome used for the non-spore-former here is the following:
 library(SpoMAG)
 
 # Load example annotation tables
-file_spor <- system.file("extdata", "one_sporulating.csv", package = "SpoMAG")
-file_aspo <- system.file("extdata", "one_asporogenic.csv", package = "SpoMAG")
+file_spor <- system.file("extdata", "one_sporulating.csv.gz", package = "SpoMAG")
+file_aspo <- system.file("extdata", "one_asporogenic.csv.gz", package = "SpoMAG")
 
 # Read files
 df_spor <- readr::read_csv(file_spor, show_col_types = FALSE)
@@ -272,8 +272,8 @@ The genomes used for the non-spore-formers here are the following:
 library(SpoMAG)
 
 # Load example annotation tables
-file_spor <- system.file("extdata", "ten_sporulating.csv", package = "SpoMAG")
-file_aspo <- system.file("extdata", "ten_asporogenic.csv", package = "SpoMAG")
+file_spor <- system.file("extdata", "ten_sporulating.csv.gz", package = "SpoMAG")
+file_aspo <- system.file("extdata", "ten_asporogenic.csv.gz", package = "SpoMAG")
 
 # Read files
 df_spor <- readr::read_csv(file_spor, show_col_types = FALSE)
