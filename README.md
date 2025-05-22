@@ -93,14 +93,14 @@ genes <- sporulation_gene_name(df)
 It creates a binary matrix indicating the presence (1) or absence (0) of known sporulation genes in each genome.
 - Input: A dataframe output from the `sporulation_gene_name()` function.
   
-- Output: A wide-format dataframe (1 row per genome, 1 column per gene).
+- Output: A wide-format dataframe (genome in rows, genes in columns).
    
 
 ```r
 matrix <- build_binary_matrix(genes)
 ```
 
-Note: The function automatically fills in missing genes with 0 to ensure consistent input for prediction.
+Note: The function automatically fills in missing genes with 0 to ensure consistent input for sporulation-capacity prediction.
 
 ### Function to predict sporulation using SpoMAG
 
@@ -168,10 +168,30 @@ The genome used for the spore-former here is the following:
 
 - GCF_000007625.1 (_Clostridium tetani_ E88, Clostridia class)
 
+
+| genome_ID       | Preferred_name | KEGG_ko |
+|-----------------|----------------|---------|
+| GCF_000007625.1 | spoIIIE        | K03466  |
+| GCF_000007625.1 | spo0A          | K07699  |
+| GCF_000007625.1 | -              | K01056  |
+| GCF_000007625.1 | pth            | -       |
+| ...             | ...            | ...     |
+
+
   
 The genome used for the non-spore-former here is the following:
 
 - GCF_000006785.2 (_Streptococcus pyogenes_ M1 GAS SF370, Clostridia class)
+
+
+| genome_ID       | Preferred_name | KEGG_ko |
+|-----------------|----------------|---------|
+| GCF_000006785.2 | spoIIIE        | K03466  |
+| GCF_000006785.2 | spo0A          | K07699  |
+| GCF_000006785.2 | -              | K01056  |
+| GCF_000006785.2 | pth            | -       |
+| ...             | ...            | ...     |
+
 
 
 ```r
@@ -219,6 +239,15 @@ The genomes used for the spore-formers here are the following:
 - GCF_900070325.1 (_Herbinix luporum_ SD1D, Clostridia class)
 - GCF_003589745.1 (_Lachnoanaerobaculum umeaense_ DSM 23576, Clostridia class)
 - GCF_000225345.1 (_Roseburia hominis_ A2-183, Clostridia class)
+
+| genome_ID       | Preferred_name | KEGG_ko |
+|-----------------|----------------|---------|
+| GCF_000011985.1 | spoIIIE        | K03466  |
+| GCF_000011985.1 | spo0A          | K07699  |
+| GCF_000011045.1 | -              | K01056  |
+| GCF_000011045.1 | pth            | -       |
+| ...             | ...            | ...     |
+
   
 The genomes used for the non-spore-formers here are the following:
 
@@ -232,6 +261,14 @@ The genomes used for the non-spore-formers here are the following:
 - GCF_000063585.1 (_Clostridium botulinum_ A ATCC 3502, Clostridia class)
 - GCF_000013285.1 (_Clostridium perfringens_ ATCC 13124, Clostridia class)
 - GCF_000007625.1 (_Clostridium tetani_ E88, Clostridia class)
+
+| genome_ID       | Preferred_name | KEGG_ko |
+|-----------------|----------------|---------|
+| GCF_000010165.1 | spoIIIE        | K03466  |
+| GCF_000010165.1 | spo0A          | K07699  |
+| GCF_000009205.2 | -              | K01056  |
+| GCF_000009205.2 | pth            | -       |
+| ...             | ...            | ...     |
 
 
 ```r
