@@ -3,14 +3,13 @@
 #' Transforms the output of `sporulation_gene_name()` into a wide-format matrix
 #' indicating the presence (1) or absence (0) of each sporulation-associated gene per genome.
 #'
-#' @param df A data.frame from `sporulation_gene_name()` with columns `codigo_genoma` and `consensus_name_this_study`.
+#' @param df A data.frame from `sporulation_gene_name()` with columns `genome_ID` and `spo_gene_name`.
 #'
 #' @return A wide-format binary matrix with genomes in rows and genes in columns.
 #' @import dplyr
 #' @importFrom tidyr pivot_wider
 #' @export
 build_binary_matrix <- function(df) {
-  # Lista de todos os genes obrigatórios
   required_genes <- c(
     "spo0A", "sigH", "spoIIE", "spoIIIE", "spoIIIJ", "pth", "spoVG", "spoVS", "divIC",
     "divIB", "divIVA", "ftsA", "ftsE", "ftsH", "ftsX", "ftsY", "ftsZ", "jag", "minC",
@@ -28,28 +27,24 @@ build_binary_matrix <- function(df) {
     "gerE"
   )
 
-  # Criar matriz binária inicial
   df_bin <- df %>%
-    mutate(presenca = 1) %>%
-    select(codigo_genoma, consensus_name_this_study, presenca) %>%
+    mutate(present = 1) %>%
+    select(genome_ID, spo_gene_name, present) %>%
     distinct() %>%
     tidyr::pivot_wider(
-      names_from = consensus_name_this_study,
-      values_from = presenca,
-      values_fill = list(presenca = 0)
+      names_from = spo_gene_name,
+      values_from = present,
+      values_fill = list(present = 0)
     )
 
-  # Corrigir nomes inválidos
   colnames(df_bin) <- gsub("[^a-zA-Z0-9_]", "_", colnames(df_bin))
 
-  # Garantir presença de todos os genes
   missing_genes <- setdiff(required_genes, colnames(df_bin))
   for (gene in missing_genes) {
     df_bin[[gene]] <- 0
   }
 
-  # Reordenar colunas (mantendo codigo_genoma primeiro)
-  df_bin <- df_bin[, c("codigo_genoma", sort(setdiff(colnames(df_bin), "codigo_genoma")))]
+  df_bin <- df_bin[, c("genome_ID", sort(setdiff(colnames(df_bin), "genome_ID")))]
 
   return(df_bin)
 }
