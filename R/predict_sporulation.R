@@ -1,7 +1,7 @@
 #' Predict Sporulation Potential
 #'
 #' This function predicts the sporulation potential of MAGs using an ensemble learning model.
-#' It uses probabilities from a Random Forest and SVM as inputs to a meta-model.
+#' It uses probabilities from Random Forest and SVM classifiers as inputs to a meta-model.
 #'
 #' @param binary_matrix A binary matrix (1/0) indicating gene presence/absence for each MAG. Must include a `genome_ID` column.
 #'
