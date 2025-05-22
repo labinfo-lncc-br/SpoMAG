@@ -14,7 +14,6 @@ LazyData: true
 Imports:
     dplyr,
     tidyr,
-    readr,
     tibble,
     stats
 Roxygen: list(markdown = TRUE)
