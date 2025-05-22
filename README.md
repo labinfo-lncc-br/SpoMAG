@@ -223,8 +223,7 @@ print(result_aspo)
 
 
 ### Running an example with more than one genome in the annotation file
-This is a quick example using the included files: `ten_sporulating.csv` (ten known spore-formers) and `ten_asporogenic.csv` (ten known non-spore-formers).
-The genomes used for the spore-formers here are the following:
+This is a quick example using the included file: `ten_sporulating.csv` (ten known spore-formers). The genomes used here are the following:
 
 - GCF_000011985.1 (_Lactobacillus acidophilus_ NCFM, Bacilli class)
 - GCF_000338115.2 (_Lactobacillus plantarum_ ZJ316, Bacilli class)
@@ -246,26 +245,6 @@ The genomes used for the spore-formers here are the following:
 | ...             | ...            | ...     |
 
   
-The genomes used for the non-spore-formers here are the following:
-
-- GCF_000011145.1 (_Bacillus halodurans_ C-125, Bacilli class)
-- GCF_000008425.1 (_Bacillus licheniformis_ DSM 13 ATCC 14580, Bacilli class)
-- GCF_000009045.1 (_Bacillus subtilis subsp. subtilis_ str. 168, Bacilli class)
-- GCF_000338755.1 (_Bacillus thuringiensis serovar kurstaki_ HD73, Bacilli class)
-- GCF_000010165.1 (_Brevibacillus brevis_ NBRC 100599, Bacilli class)
-- GCF_000009205.2 (_Clostridioides difficile_ 630, Clostridia class)
-- GCF_000008765.1 (_Clostridium acetobutylicum_ ATCC 824, Clostridia class)
-- GCF_000063585.1 (_Clostridium botulinum_ A ATCC 3502, Clostridia class)
-- GCF_000013285.1 (_Clostridium perfringens_ ATCC 13124, Clostridia class)
-- GCF_000007625.1 (_Clostridium tetani_ E88, Clostridia class)
-
-| genome_ID       | Preferred_name | KEGG_ko |
-|-----------------|----------------|---------|
-| GCF_000010165.1 | spoIIIE        | K03466  |
-| GCF_000009205.2 | -              | K01056  |
-| GCF_000009205.2 | pth            | -       |
-| ...             | ...            | ...     |
-
 
 ```r
 # Load package
@@ -273,25 +252,19 @@ library(SpoMAG)
 
 # Load example annotation tables
 file_spor <- system.file("extdata", "ten_sporulating.csv.gz", package = "SpoMAG")
-file_aspo <- system.file("extdata", "ten_asporogenic.csv.gz", package = "SpoMAG")
 
 # Read files
 df_spor <- readr::read_csv(file_spor, show_col_types = FALSE)
-df_aspo <- readr::read_csv(file_aspo, show_col_types = FALSE)
 
 # Step 1: Extract sporulation-related genes
 genes_spor <- sporulation_gene_name(df_spor)
-genes_aspo <- sporulation_gene_name(df_aspo)
 
 # Step 2: Convert to binary matrix
 bin_spor <- build_binary_matrix(genes_spor)
-bin_aspo <- build_binary_matrix(genes_aspo)
 
 # Step 3: Predict using ensemble model (preloaded in package)
 result_spor <- predict_sporulation(bin_spor)
-result_aspo <- predict_sporulation(bin_aspo)
 
 # View results
 print(result_spor)
-print(result_aspo)
 ```
