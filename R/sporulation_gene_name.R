@@ -1518,3 +1518,8 @@ sporulation_gene_name <- function(df){
 
   return(df)
 }
+utils::globalVariables(c(
+  "genome_ID", "spo_gene_name", "present", "rf_model",
+  "svm_model", "meta_model", "Preferred_name", "KEGG_ko",
+  "spoiiie_ko_eccca"
+))
