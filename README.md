@@ -197,7 +197,7 @@ The genome used for the non-spore-former here is the following:
 library(SpoMAG)
 
 # Load example annotation tables
-file_spor <- system.file("extdata", "one_sporulation.csv", package = "SpoMAG")
+file_spor <- system.file("extdata", "one_sporulating.csv", package = "SpoMAG")
 file_aspo <- system.file("extdata", "one_asporogenic.csv", package = "SpoMAG")
 
 # Read files
