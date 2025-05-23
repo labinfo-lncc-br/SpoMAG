@@ -72,7 +72,9 @@ SpoMAG depends on the following packages:
 - readr, version 2.1.5
 - caret, version 7.0.1
 - randomForest, version 4.7.1.2
+- kernlab, version 0.9.33
 
+Before using SpoMAG, make sure these packages are installed in your R environment. Once installed, load each package using the `library()` function.
 
 ### Preprocessing functions in SpoMAG
 
