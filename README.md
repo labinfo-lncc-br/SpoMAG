@@ -1,3 +1,10 @@
+
+[![version](https://www.r-pkg.org/badges/version/SpoMAG)](https://www.r-pkg.org/badges/version/SpoMAG)
+[![lastmonth](https://cranlogs.r-pkg.org/badges/last-month/SpoMAG?color=blue)](https://r-pkg.org/pkg/SpoMAG)
+[![lastweek](https://cranlogs.r-pkg.org/badges/last-week/SpoMAG)](https://cranlogs.r-pkg.org/badges/last-week/SpoMAG)
+[![lastday](https://cranlogs.r-pkg.org/badges/last-day/SpoMAG)](https://cranlogs.r-pkg.org/badges/last-day/SpoMAG)
+[![total](https://cranlogs.r-pkg.org/badges/grand-total/SpoMAG)](https://cranlogs.r-pkg.org/badges/grand-total/SpoMAG)
+
 <p align="center">
 <img src="./man/figures/SpoMAG_title.png" alt="SpoMAG_title" width="600"/>
 </p>
