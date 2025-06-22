@@ -59,14 +59,10 @@ Paper under publication.
 
 ## Installation of the SpoMAG package
 
-You can install the **SpoMAG** package directly from GitHub using:
+You can install the **SpoMAG** package using:
 
 ```r
-# Install devtools if not already installed
-install.packages("devtools")
-
-# Install SpoMAG from GitHub
-devtools::install_github("labinfo-lncc-br/SpoMAG")
+install.packages("SpoMAG")
 ```
 
 ### Dependencies
